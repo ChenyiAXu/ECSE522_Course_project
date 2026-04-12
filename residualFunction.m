@@ -1,4 +1,14 @@
 function F_trap_res = residualFunction(x_old, x_current, P_m, H, D, ws, h, Y_red, E_mag)
+% x_old      : machine state vector from the previous time step
+% x_current  : current Newton estimate of the new state vector
+% P_m        : mechanical input power of each generator
+% H          : inertia constant of each generator
+% D          : damping coefficient of each generator
+% ws         : rated synchronous angular speed
+% h          : simulation step size
+% Y_red      : reduced network admittance matrix
+% E_mag      : internal voltage magnitude of each generator
+% F_trap_res : trapezoidal residual vector
 F_trap_res = zeros(length(x_old), 1); %initialize output variable
 ng = length(E_mag); % # of generators 
 %initialization
