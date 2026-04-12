@@ -1,5 +1,17 @@
 function [x_new, iter] = trapImplicit( ...
     x_old, P_m, E_mag, Y_red, H, D, ws, h, tol, maxIter)
+% x_old   : machine state vector from the previous time step
+% P_m     : mechanical input power of each generator
+% E_mag   : internal voltage magnitude of each generator
+% Y_red   : reduced network admittance matrix
+% H       : inertia constant of each generator
+% D       : damping coefficient of each generator
+% ws      : rated synchronous angular speed
+% h       : simulation step size
+% tol     : Newton iteration convergence tolerance
+% maxIter : maximum allowed Newton iterations
+% x_new   : state vector at the new time step
+% iter    : Newton iteration count
 ng = length(E_mag);
 delta_old = x_old(1:ng);
 dw_old = x_old(ng+1:end);
